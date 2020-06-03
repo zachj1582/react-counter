@@ -1,38 +1,84 @@
+#root{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  color: aliceblue;
+  background-image: url('./CommentNationBackground.jpeg');
+  background-color: lightgrey;
+}
+
 .App {
+  padding-bottom: 150px;
+  height: 33vh;
+  width: 40%;
+  border-radius: 5px;
+  background-image: linear-gradient(rgb(149, 149, 149), rgb(31, 31, 31));
+  box-shadow: 0px -3px 10px 8px rgb(97, 97, 97);
+  text-transform: uppercase;
+  font-weight: 900;
+  transform: translateX(-100%);
+}
+
+h2 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ticker {
+  text-align: center;
+  font-size: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  width: 70px;
+  border-radius: 5px;
+  height: 30px;
+  margin: 10px;
+  /* background-color: rgb(235, 235, 235); */
+  background-image: radial-gradient(rgb(235, 235, 235), rgb(85, 84, 84));
 }
 
-.App-header {
-  background-color: #282c34;
-  /* min-height: 100vh; */
+.btn {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+.container{
+  text-align: center;
+  text-transform: uppercase;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hist {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  max-height: 120px;
+  overflow: scroll;
+}
+
+p {
+  width: 20%;
+  margin: 5px 0;
+}
+
+/* animations */
+
+.App {
+  animation: fadeIn 1.8s ease-in 0s forwards, slideIn 1s ease-in 0.9s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.1;
   }
-  to {
-    transform: rotate(360deg);
+   
+  100% {
+    opacity: 1;
+  }
+}
+ 
+@keyframes slideIn {
+  100% {
+    transform: translateX(0);
   }
 }

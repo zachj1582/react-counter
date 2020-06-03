@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import ButtonPad from "./ButtonPad";
+import Odometer from "react-odometerjs";
+import "odometer/themes/odometer-theme-train-station.css";
 
 function Display(props) {
   let [display, setDisplay] = useState(0);
   let [countHist, setCountHist] = useState([]);
+  let [hist, setHist] = useState(false)
 
   const increment1 = () => {
     setDisplay((display += 1));
@@ -26,22 +29,33 @@ function Display(props) {
   };
 
   const reset = () => {
-    setCountHist((countHist) => [...countHist, display]);
+    setCountHist([...countHist, display]);
     setDisplay((display = 0));
   };
 
+  const showHist = () => {
+    setHist(!hist)
+  }
+
   return (
-      <section className="display">
-      {display}
-      <ButtonPad
-          inc1={increment1}
-          inc2={increment2}
-          inc5={increment5}
-          inc10={increment10}
-          dec1={decrement1}
-          reset={reset}
+    <section className="display">
+      <div className="ticker">
+        <Odometer
+          format="(,ddd).dd"
+          duration={1000}
+          value={display}
         />
-        {countHist}
+      </div>
+      <ButtonPad
+        inc1={increment1}
+        inc2={increment2}
+        inc5={increment5}
+        inc10={increment10}
+        dec1={decrement1}
+        reset={reset}
+        showHist={showHist}
+      />
+      {hist && <div className='container' >Ticker history: <div className='hist' >{countHist.map(e => <p>{e}</p>)}</div></div>}
     </section>
   );
 }
